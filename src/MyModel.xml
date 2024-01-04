@@ -1,0 +1,179 @@
+<robot name="robot1">
+
+    <material name="blue">
+        <color rgba="0 0 0.8 1" />
+    </material>
+    <material name="black">
+        <color rgba="0 0 0 1" />
+    </material>
+    <material name="white">
+        <color rgba="1 1 1 1" />
+    </material>
+
+    <link name="base">
+        <visual>
+            <geometry>
+                <box size="0.5 0.5 0.01" />
+            </geometry>
+            <material name="czarny">
+                <color rgba="0 0 0 1" />
+            </material>
+            <origin xyz="0 0 0.005" rpy="0 0 0" />
+        </visual>
+    </link>
+    <link name="link0">
+        <visual>
+            <geometry>
+                <cylinder length="0.68" radius="0.19" />
+            </geometry>
+            <material name="white" />
+            <origin xyz="0 0 0.34" rpy="0 0 0" />
+        </visual>
+    </link>
+    <joint name="q1" type="revolute">
+        <parent link="base" />
+        <child link="link0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <limit lower="-1.57" upper="1.57" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+    <link name="ball1">
+        <visual>
+            <geometry>
+                <sphere radius="0.085" />
+            </geometry>
+            <material name="black" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </visual>
+    </link>
+
+
+    <link name="link1">
+        <visual>
+            <geometry>
+                <cylinder length="1.15" radius="0.075" />
+            </geometry>
+            <material name="white" />
+            <origin xyz="0 0 0.575" rpy="0 0 0" />
+        </visual>
+    </link>
+    <joint name="q2_ball1" type="fixed">
+        <origin xyz="0.105 0 0.68" rpy="0 0 0" />
+        <parent link="link0" />
+        <child link="ball1" />
+    </joint>
+
+    <joint name="q2" type="revolute">
+        <parent link="ball1" />
+        <child link="link1" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <limit lower="-1.57" upper="1.57" />
+        <axis xyz="0 -1 0" />
+    </joint>
+
+    <link name="ball2">
+        <visual>
+            <geometry>
+                <sphere radius="0.075" />
+            </geometry>
+            <material name="black" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </visual>
+    </link>
+
+    <joint name="q3_ball2" type="fixed">
+        <origin xyz="0 0 1.15" rpy="0 0 0" />
+        <parent link="link1" />
+        <child link="ball2" />
+    </joint>
+
+    <link name="link2a">
+        <visual>
+            <geometry>
+                <cylinder length="1.0" radius="0.06" />
+            </geometry>
+            <material name="white" />
+            <origin xyz="0 0 0.5" rpy="0 0 0" />
+        </visual>
+    </link>
+
+    <joint name="q3" type="revolute">
+        <parent link="ball2" />
+        <child link="link2a" />
+        <origin xyz="0 0 0" rpy="0 1.571 0" />
+        <limit lower="-1.57" upper="1.57" />
+        <axis xyz="0 -1 0" />
+    </joint>
+
+    <link name="link2b">
+        <visual>
+            <geometry>
+                <cylinder length="0.85" radius="0.06" />
+            </geometry>
+            <material name="white" />
+            <origin xyz="0 0 0.425" rpy="0 0 0" />
+        </visual>
+    </link>
+
+    <joint name="q4" type="continuous">
+        <parent link="link2a" />
+        <child link="link2b" />
+        <origin xyz="0 0 1" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+    <link name="ball3">
+        <visual>
+            <geometry>
+                <sphere radius="0.075" />
+            </geometry>
+            <material name="black" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </visual>
+    </link>
+
+    <joint name="q4_ball3" type="fixed">
+        <origin xyz="0 0 0.85" rpy="0 0 0" />
+        <parent link="link2b" />
+        <child link="ball3" />
+    </joint>
+
+    <link name="link3a">
+        <visual>
+            <geometry>
+                <cylinder length="0.085" radius="0.06" />
+            </geometry>
+            <material name="white" />
+            <origin xyz="0 0 0.0425" rpy="0 0 0" />
+        </visual>
+    </link>
+
+    <joint name="q5" type="revolute">
+        <parent link="ball3" />
+        <child link="link3a" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <limit lower="-1.57" upper="1.57" />
+        <axis xyz="0 -1 0" />
+    </joint>
+
+    <link name="link3b">
+        <visual>
+            <geometry>
+                <cylinder length="0.01" radius="0.06" />
+            </geometry>
+            <material name="white" />
+            <origin xyz="0 0 0.0.005" rpy="0 0 0" />
+        </visual>
+    </link>
+
+    <joint name="q6" type="revolute">
+        <parent link="link3a" />
+        <child link="link3b" />
+        <origin xyz="0 0 0.01" rpy="0 0 0" />
+        <limit lower="-1.57" upper="1.57" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+
+</robot>
